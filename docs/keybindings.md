@@ -26,6 +26,7 @@ Shoot portal #2: E
 Misc
 ----
 Use: F
+Map: M
 
 GUI
 ---
