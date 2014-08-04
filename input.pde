@@ -11,7 +11,7 @@ void updateKeys(){
 
 // keyPressed is a Processing specific "callback" method
 // that gets called when a key is pressed
-// Set the boolean at the index of "keyCode" to true 
+// Set the boolean at the index of "keyCode" to true
 void keyPressed() {
   keysPressed[keyCode] = true;
 }
