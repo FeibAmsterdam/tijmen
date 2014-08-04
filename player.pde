@@ -4,6 +4,7 @@ class Player extends GameObject {
 
 	Player(){
 		this.fillColor = color(255, 0, 0);
+        speed = 5;
 	}
 
 	void update(){
