@@ -14,8 +14,7 @@ class Player extends GameObject {
 	void update(float timeStep){
         PVector dir = new PVector();
 
-		velocity.x = 0; // our object won't move
-     	velocity.y = 0;
+        velocity.set(0,0);
 
     	if (InputHelper.keysPressed[65]) dir.x += -1;
     	if (InputHelper.keysPressed[68]) dir.x += 1;
@@ -27,7 +26,7 @@ class Player extends GameObject {
         velocity.add(dir);
         position.add(PVector.mult(velocity, timeStep));
 
-    	angle = atan2(position.y - mouseY, position.x - mouseX) + PI + PI/2;
+    	angle = atan2(position.y - crossHair.position.y, position.x - crossHair.position.x) + PI + PI/2;
 	}
 
 	void draw(){
@@ -45,20 +44,5 @@ class Player extends GameObject {
     		new PVector(-diameter/2, diameter/2), 2);
 
     	popMatrix();
-
-
-
-        PVector mousePosWorld = cam.camToWorld(new PVector(mouseX, mouseY));
-
-
-    	noFill();
-		stroke(150,70);
-    	pushMatrix();
-    	translate(mousePosWorld.x, mousePosWorld.y);
-        this.pencil.circle(new PVector(0, 0), 20);
-        this.pencil.pline(new PVector(-12,0), new PVector(12, 0), 2);
-        this.pencil.pline(new PVector(0, -12), new PVector(0, 12), 2);
-    	popMatrix();
-
 	}
 }

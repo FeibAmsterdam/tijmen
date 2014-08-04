@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-GameObject player, fastEnemy, slowEnemy, coin, tile;
-=======
-
 Camera cam;
-GameObject player, fastEnemy, slowEnemy, coin;
->>>>>>> Adds Tile and sub Tile classes. Adds Tiles in Main array list
+GameObject player, crossHair;
 
 ArrayList<GameObject> gameObjects;
 float timeStep;
@@ -12,6 +7,7 @@ int oldMillis;
 
 void setup(){
 	size(800, 600, P2D);
+	noSmooth();
 	gameObjects = new ArrayList<GameObject>();
 
 	player = new Player();
@@ -30,6 +26,8 @@ void setup(){
 	cam = new Camera(new PVector(width/2, height/2));
 	gameObjects.add(cam);
 
+	crossHair = new CrossHair();
+	gameObjects.add(crossHair);
 
 }
 
