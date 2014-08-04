@@ -2,9 +2,9 @@ class FastEnemy extends Enemy {
 
 
 
-	FastEnemy(float x, float y){
+	FastEnemy(PVector position){
 
-        super(x, y);
+        super(position);
 		this.fillColor = color(0, 0, 255);
         // Start position
         // this.x = x;
@@ -19,7 +19,7 @@ class FastEnemy extends Enemy {
 
      void draw(){
         fill(fillColor);
-        ellipse(x, y, diameter, diameter);
+        ellipse(position.x, position.y, diameter, diameter);
     }
 }
 

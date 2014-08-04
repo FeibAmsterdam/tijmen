@@ -2,30 +2,28 @@ class Enemy extends GameObject {
 
     float damage;
 
-	Enemy(float x, float y){
+	Enemy(PVector position){
         // Start position
-        this.x = x;
-        this.y = y;
-        vx = random(-1.0, 1.0);
-        vy = random(-1.0, 1.0);
+        this.position = position.get();
+
+        this.velocity.x = random(-1.0, 1.0);
+        this.velocity.y = random(-1.0, 1.0);
 
     }
 
     void update(){
+        position.add(PVector.mult(velocity,speed));
 
-    	// Update our position using the velocity
-    	x += vx * speed;
-    	y += vy * speed;
 
-         // Detect wether the enemy bounces against the edges of the window
+        // Detect wether the enemy bounces against the edges of the window
         // and change the direction if they do
-        if ((x > width-diameter/2) || (x < diameter/2)) vx = -vx;
-        if ((y > height-diameter/2) || (y < diameter/2)) vy = -vy;
+        if ((position.x > width-diameter/2) || (position.x < diameter/2)) velocity.x = -velocity.x;
+        if ((position.y > height-diameter/2) || (position.y < diameter/2)) velocity.y = -velocity.y;
 
     }
      void draw(){
         fill(fillColor);
-        ellipse(x, y, diameter, diameter);
+        ellipse(position.x, position.y, diameter, diameter);
     }
 }
 

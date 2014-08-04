@@ -8,24 +8,22 @@ class Player extends GameObject {
 	}
 
 	void update(){
-		vx = 0; // our object won't move
-     	vy = 0;
+		velocity.x = 0; // our object won't move
+     	velocity.y = 0;
 
-    	if (InputHelper.keysPressed[65]) vx = -1;
-    	if (InputHelper.keysPressed[68]) vx = 1;
-    	if (InputHelper.keysPressed[87]) vy = -1;
-    	if (InputHelper.keysPressed[83]) vy = 1;
+    	if (InputHelper.keysPressed[65]) velocity.x = -1;
+    	if (InputHelper.keysPressed[68]) velocity.x = 1;
+    	if (InputHelper.keysPressed[87]) velocity.y = -1;
+    	if (InputHelper.keysPressed[83]) velocity.y = 1;
 
-    	// Update our position using the velocity
-    	x += vx * speed;
-    	y += vy * speed;
+        position.add(PVector.mult(velocity, 1));
 
-    	angle = atan2(y - mouseY, x - mouseX) + PI + PI/2;
+    	angle = atan2(position.y - mouseY, position.x - mouseX) + PI + PI/2;
 	}
 
 	void draw(){
 		pushMatrix();
-		translate(x,y);
+		translate(position.x,position.y);
 		pushMatrix();
 		rotate(angle);
 		fill(fillColor);

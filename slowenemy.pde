@@ -2,8 +2,8 @@ class SlowEnemy extends Enemy {
 
 
 
-	SlowEnemy(float x, float y){
-		super(x, y);
+	SlowEnemy(PVector position){
+		super(position);
         this.fillColor = color(0, 255, 0);
         // Start position
         // this.x = x;
@@ -17,7 +17,7 @@ class SlowEnemy extends Enemy {
 
      void draw(){
         fill(this.fillColor);
-        ellipse(x, y, diameter, diameter);
+        ellipse(position.x, position.y, diameter, diameter);
     }
 
 

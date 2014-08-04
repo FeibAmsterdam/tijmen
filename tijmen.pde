@@ -10,8 +10,8 @@ void setup(){
 	gameObjects = new ArrayList<GameObject>();
 
 	player = new Player();
-	fastEnemy = new FastEnemy(100, 100);
-	slowEnemy = new SlowEnemy(100, 100);
+	fastEnemy = new FastEnemy(new PVector(100, 100));
+	slowEnemy = new SlowEnemy(new PVector(100, 100));
 	coin = new GameObject();
 
 	gameObjects.add(player);
@@ -19,9 +19,8 @@ void setup(){
 	gameObjects.add(coin);
 
 	for (int i = 0; i < 30; ++i) {
-		gameObjects.add(new SlowEnemy(random(50)+100, random(0, 100)+100));
-
-}
+		gameObjects.add(new SlowEnemy(new PVector(random(50)+100, random(0, 100)+100)));
+	}
 
 
 }
