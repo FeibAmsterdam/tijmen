@@ -8,7 +8,7 @@ class SlowEnemy extends Enemy {
         // Start position
         // this.x = x;
         // this.y = y;
-        this.speed = 100;
+        this.speed = 10;
 
 
     }
@@ -19,5 +19,6 @@ class SlowEnemy extends Enemy {
         fill(this.fillColor);
         ellipse(x, y, diameter, diameter);
     }
-}
 
+
+}

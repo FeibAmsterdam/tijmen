@@ -9,7 +9,7 @@ class FastEnemy extends Enemy {
         // Start position
         // this.x = x;
         // this.y = y;
-        this.speed = 10;
+        this.speed = 30;
 
 
     }
