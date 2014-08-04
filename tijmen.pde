@@ -22,7 +22,7 @@ void setup(){
 	gameObjects.add(new SpikeTile(new PVector(100, 300)));
 	gameObjects.add(new WallTile(new PVector(0, 300)));
 
-	for (int i = 0; i < 30; ++i) {
+	for (int i = 0; i < 5; ++i) {
 		gameObjects.add(new SlowEnemy(new PVector(random(50)+100, random(0, 100)+100)));
 	}
 
@@ -30,9 +30,9 @@ void setup(){
 }
 
 void draw(){
-	background(0);
 	timeStep = (millis() - oldMillis)/1000.0;
 	oldMillis = millis();
+	background(255,250,250);
 
 	for (int i = 0; i < gameObjects.size(); i++) {
 		GameObject go = gameObjects.get(i);

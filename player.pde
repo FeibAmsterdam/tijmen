@@ -2,10 +2,13 @@ class Player extends GameObject {
 
 	float angle=0;
     float thrust = 100.0;
+	Pencil pencil;
 
 	Player(){
 		this.fillColor = color(255, 0, 0);
         speed = 5;
+
+        this.pencil = new Pencil(23);
 	}
 
 	void update(float timeStep){
@@ -30,25 +33,28 @@ class Player extends GameObject {
 	void draw(){
 		pushMatrix();
 		translate(position.x,position.y);
-		pushMatrix();
 		rotate(angle);
-		fill(fillColor);
+    	noFill();
 
-    	triangle(-diameter/2, diameter/2,
-    		0, -diameter/2,
-    		+diameter/2, diameter/2);
+		stroke(150,70);
+		this.pencil.pline(new PVector(-diameter/2, diameter/2),
+    		new PVector(0, -diameter/2), 2);
+		this.pencil.pline(new PVector(0, -diameter/2),
+    		new PVector(+diameter/2, diameter/2), 2);
+		this.pencil.pline(new PVector(+diameter/2, diameter/2),
+    		new PVector(-diameter/2, diameter/2), 2);
 
     	popMatrix();
-    	popMatrix();
+
+
 
     	noFill();
-    	stroke(0, 200, 0);
-    	strokeWeight(2);
+		stroke(150,70);
     	pushMatrix();
     	translate(mouseX, mouseY);
-    	ellipse(0, 0, 20, 20);
-    	line(-12,0, 12, 0);
-    	line(0, -12, 0, 12);
+    	this.pencil.circle(new PVector(0, 0), 20);
+    	this.pencil.pline(new PVector(-12,0), new PVector(12, 0), 2);
+    	this.pencil.pline(new PVector(0, -12), new PVector(0, 12), 2);
     	popMatrix();
 
 	}
