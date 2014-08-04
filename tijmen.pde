@@ -12,7 +12,6 @@ void setup(){
 	//fastEnemy = new FastEnemy(new PVector(100, 100));
 	//slowEnemy = new SlowEnemy(new PVector(100, 100));
 	//coin = new GameObject();
-	//tile = new
 
 	gameObjects.add(player);
 	gameObjects.add(new FastEnemy(new PVector(100, 100)));
@@ -21,10 +20,16 @@ void setup(){
 	gameObjects.add(new BasicTile(new PVector(200, 300)));
 	gameObjects.add(new SpikeTile(new PVector(100, 300)));
 	gameObjects.add(new WallTile(new PVector(0, 300)));
+	gameObjects.add(new Button(new PVector(750, 550)));
 
 	for (int i = 0; i < 30; ++i) {
 		gameObjects.add(new SlowEnemy(new PVector(random(50)+100, random(0, 100)+100)));
 	}
+
+
+
+
+
 
 
 }
@@ -33,6 +38,8 @@ void draw(){
 	background(0);
 	timeStep = (millis() - oldMillis)/1000.0;
 	oldMillis = millis();
+
+	InputHelper.update();
 
 	for (int i = 0; i < gameObjects.size(); i++) {
 		GameObject go = gameObjects.get(i);
