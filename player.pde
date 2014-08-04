@@ -48,13 +48,16 @@ class Player extends GameObject {
 
 
 
+        PVector mousePosWorld = cam.camToWorld(new PVector(mouseX, mouseY));
+
+
     	noFill();
 		stroke(150,70);
     	pushMatrix();
-    	translate(mouseX, mouseY);
-    	this.pencil.circle(new PVector(0, 0), 20);
-    	this.pencil.pline(new PVector(-12,0), new PVector(12, 0), 2);
-    	this.pencil.pline(new PVector(0, -12), new PVector(0, 12), 2);
+    	translate(mousePosWorld.x, mousePosWorld.y);
+        this.pencil.circle(new PVector(0, 0), 20);
+        this.pencil.pline(new PVector(-12,0), new PVector(12, 0), 2);
+        this.pencil.pline(new PVector(0, -12), new PVector(0, 12), 2);
     	popMatrix();
 
 	}

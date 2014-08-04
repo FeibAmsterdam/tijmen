@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 GameObject player, fastEnemy, slowEnemy, coin, tile;
+=======
+
+Camera cam;
+GameObject player, fastEnemy, slowEnemy, coin;
+>>>>>>> Adds Tile and sub Tile classes. Adds Tiles in Main array list
 
 ArrayList<GameObject> gameObjects;
 float timeStep;
@@ -9,14 +15,9 @@ void setup(){
 	gameObjects = new ArrayList<GameObject>();
 
 	player = new Player();
-	//fastEnemy = new FastEnemy(new PVector(100, 100));
-	//slowEnemy = new SlowEnemy(new PVector(100, 100));
-	//coin = new GameObject();
-	//tile = new
 
 	gameObjects.add(player);
 	gameObjects.add(new FastEnemy(new PVector(100, 100)));
-	//gameObjects.add(new Coin);
 	gameObjects.add(new WaterTile(new PVector(300, 300)));
 	gameObjects.add(new BasicTile(new PVector(200, 300)));
 	gameObjects.add(new SpikeTile(new PVector(100, 300)));
@@ -25,6 +26,9 @@ void setup(){
 	for (int i = 0; i < 5; ++i) {
 		gameObjects.add(new SlowEnemy(new PVector(random(50)+100, random(0, 100)+100)));
 	}
+
+	cam = new Camera(new PVector(width/2, height/2));
+	gameObjects.add(cam);
 
 
 }
@@ -39,9 +43,12 @@ void draw(){
 		go.update(timeStep);
 	}
 
+	pushMatrix();
+	translate(-cam.camPos().x, -cam.camPos().y);
 	for (int i = 0; i < gameObjects.size(); i++) {
 		GameObject go = gameObjects.get(i);
 		go.draw();
 	}
+	popMatrix();
 
 }
