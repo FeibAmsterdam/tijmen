@@ -10,7 +10,7 @@ class Button extends GameObject {
 	}
 
 	void update(float timeStep){
-		//MOOIER MAKEN DOOR
+		//MOOIER MAKEN DOOR pos en dim te verwerken in de statement
  		if ((mouseX > position.x && < dimension.x) && (mouseY > position.y) && (InputHelper.leftMouseClicked)) println("woei knop");
 	}
 
