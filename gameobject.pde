@@ -8,7 +8,7 @@ class GameObject {
   float mass;
   color fillColor;
 
-  float speed = 5;
+  float speed;
 
   GameObject(){
     this.diameter = 20;

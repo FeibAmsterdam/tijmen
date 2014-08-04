@@ -1,10 +1,11 @@
-GameObject player, enemy, coin;
+GameObject player, fastEnemy, slowEnemy, coin;
 
 void setup(){
 	size(800, 600, P2D);
 
 	player = new Player();
-	enemy = new GameObject();
+	fastEnemy = new FastEnemy(100, 100);
+	slowEnemy = new SlowEnemy(100, 100);
 	coin = new GameObject();
 }
 
@@ -12,10 +13,12 @@ void draw(){
 	background(0);
 
 	player.update();
-	enemy.update();
+	fastEnemy.update();
+	slowEnemy.update();
 	coin.update();
 
 	player.draw();
-	enemy.draw();
+	fastEnemy.draw();
+	slowEnemy.draw();
 	coin.draw();
 }
