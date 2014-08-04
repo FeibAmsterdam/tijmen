@@ -22,6 +22,7 @@ Environment
   - Unlock Grapple Hook
   - Unlock Portal Gun
 * Water tiles, can't walk over it but can grapple over it
+* Breakable walls
 
 Hostile
 -------
