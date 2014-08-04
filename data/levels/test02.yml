@@ -1,0 +1,5 @@
+0: entrance
+1: exit(target='test03')
+2: wall
+3: water
+4: pickup(power='grapple')

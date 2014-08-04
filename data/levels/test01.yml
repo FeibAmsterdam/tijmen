@@ -1,0 +1,4 @@
+0: entrance
+1: exit(target='test02')
+2: wall
+3: water
