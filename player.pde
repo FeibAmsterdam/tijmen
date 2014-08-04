@@ -35,5 +35,16 @@ class Player extends GameObject {
 
     	popMatrix();
     	popMatrix();
+
+    	noFill();
+    	stroke(0, 200, 0);
+    	strokeWeight(2);
+    	pushMatrix();
+    	translate(mouseX, mouseY);
+    	ellipse(0, 0, 20, 20);
+    	line(-12,0, 12, 0);
+    	line(0, -12, 0, 12);
+    	popMatrix();
+
 	}
 }

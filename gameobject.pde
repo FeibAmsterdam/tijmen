@@ -24,6 +24,7 @@ class GameObject {
   }
 
   void draw() {
+    noStroke();
     fill(fillColor);
 
     triangle(x-diameter/2, y+diameter/2,
