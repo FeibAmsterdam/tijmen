@@ -1,4 +1,4 @@
-GameObject player, fastEnemy, slowEnemy, coin;
+GameObject player, fastEnemy, slowEnemy, coin, tile;
 
 ArrayList<GameObject> gameObjects;
 float timeStep;
@@ -9,13 +9,18 @@ void setup(){
 	gameObjects = new ArrayList<GameObject>();
 
 	player = new Player();
-	fastEnemy = new FastEnemy(new PVector(100, 100));
-	slowEnemy = new SlowEnemy(new PVector(100, 100));
-	coin = new GameObject();
+	//fastEnemy = new FastEnemy(new PVector(100, 100));
+	//slowEnemy = new SlowEnemy(new PVector(100, 100));
+	//coin = new GameObject();
+	//tile = new
 
 	gameObjects.add(player);
-	gameObjects.add(fastEnemy);
-	gameObjects.add(coin);
+	gameObjects.add(new FastEnemy(new PVector(100, 100)));
+	//gameObjects.add(new Coin);
+	gameObjects.add(new WaterTile(new PVector(300, 300)));
+	gameObjects.add(new BasicTile(new PVector(200, 300)));
+	gameObjects.add(new SpikeTile(new PVector(100, 300)));
+	gameObjects.add(new WallTile(new PVector(0, 300)));
 
 	for (int i = 0; i < 30; ++i) {
 		gameObjects.add(new SlowEnemy(new PVector(random(50)+100, random(0, 100)+100)));
