@@ -32,8 +32,11 @@ void draw(){
 	for (int i = 0; i < gameObjects.size(); i++) {
 		GameObject go = gameObjects.get(i);
 		go.update(timeStep);
-		go.draw();
 	}
 
+	for (int i = 0; i < gameObjects.size(); i++) {
+		GameObject go = gameObjects.get(i);
+		go.draw();
+	}
 
 }
