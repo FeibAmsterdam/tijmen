@@ -10,11 +10,10 @@ class Player extends GameObject {
 		vx = 0; // our object won't move
      	vy = 0;
 
-    	if (keysPressed[LEFT]) vx = -1;
-    	if (keysPressed[RIGHT]) vx = 1;
-    	if (keysPressed[UP]) vy = -1;
-    	if (keysPressed[DOWN]) vy = 1;
-
+    	if (InputHelper.keysPressed[65]) vx = -1;
+    	if (InputHelper.keysPressed[68]) vx = 1;
+    	if (InputHelper.keysPressed[87]) vy = -1;
+    	if (InputHelper.keysPressed[83]) vy = 1;
 
     	// Update our position using the velocity
     	x += vx * speed;
