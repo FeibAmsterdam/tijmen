@@ -8,12 +8,11 @@ class Enemy extends GameObject {
 
         this.velocity.x = random(-1.0, 1.0);
         this.velocity.y = random(-1.0, 1.0);
-
     }
 
-    void update(){
-        position.add(PVector.mult(velocity,speed));
+    void update(float timeStep){
 
+        position.add(PVector.mult(velocity, timeStep));
 
         // Detect wether the enemy bounces against the edges of the window
         // and change the direction if they do
@@ -21,9 +20,9 @@ class Enemy extends GameObject {
         if ((position.y > height-diameter/2) || (position.y < diameter/2)) velocity.y = -velocity.y;
 
     }
-     void draw(){
+
+    void draw(){
         fill(fillColor);
         ellipse(position.x, position.y, diameter, diameter);
     }
 }
-

@@ -6,11 +6,8 @@ class FastEnemy extends Enemy {
 
         super(position);
 		this.fillColor = color(0, 0, 255);
-        // Start position
-        // this.x = x;
-        // this.y = y;
-        this.speed = 30;
 
+        this.velocity = new PVector(random(20.0, 30.0), random(20.0, 30.0));
 
     }
 

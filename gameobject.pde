@@ -18,16 +18,12 @@ class GameObject {
     this.diameter = this.dimension.mag();
     this.fillColor = color(255, 255, 255);
 
-    this.position = new PVector();
-    this.position.x = width/2 - dimension.x/2;
-    this.position.y = height/2;
-
+    this.position = new PVector(width/2 - dimension.x/2, height/2);
     this.velocity = new PVector();
-    this.velocity.x = 0;
-    this.velocity.y = 0;
+
   }
 
-  void update() {
+  void update(float timeStep) {
   }
 
   void draw() {

@@ -1,12 +1,11 @@
 GameObject player, fastEnemy, slowEnemy, coin;
 
 ArrayList<GameObject> gameObjects;
-
+float timeStep;
+int oldMillis;
 
 void setup(){
 	size(800, 600, P2D);
-
-
 	gameObjects = new ArrayList<GameObject>();
 
 	player = new Player();
@@ -27,10 +26,12 @@ void setup(){
 
 void draw(){
 	background(0);
+	timeStep = (millis() - oldMillis)/1000.0;
+	oldMillis = millis();
 
 	for (int i = 0; i < gameObjects.size(); i++) {
 		GameObject go = gameObjects.get(i);
-		go.update();
+		go.update(timeStep);
 		go.draw();
 	}
 
