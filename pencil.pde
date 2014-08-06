@@ -96,9 +96,9 @@ class Pencil {
 	Pencil(int seed) {
 		this.seed = seed;
 	}
-	void pline(PVector a, PVector b, float w) {
+	void pline(PVector a, PVector b) {
 
-
+		float w = 2;
 	    float n = w*2;
 	    float col = 0;
 
@@ -114,13 +114,17 @@ class Pencil {
 
 	void circle(PVector position, float radius) {
 		stroke(150,70);
+        noFill();
 
 		Gaussian gauss = new Gaussian(seed);
-	    float width1 = radius*0.04;
-	    float width2 = radius*0.002;
-		for(int i=0;i<30;i++) {
-			fill(230+gauss.next()*4,230+gauss.next()*4,240+gauss.next()*4,10);
-			ellipse(position.x+gauss.next()*width2,position.y+gauss.next()*width2,radius+gauss.next()*width1,radius+gauss.next()*width1);
+	    float width1 = 2;
+	    float width2 = 1;
+		for(int i=0;i<5;i++) {
+			pushMatrix();
+			translate(position.x, position.y);
+			rotate(gauss.next()*2*PI);
+			ellipse(gauss.next()*width2,gauss.next()*width2,radius+gauss.next()*width1,radius+gauss.next()*width1);
+			popMatrix();
 		}
 	}
 }

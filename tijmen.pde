@@ -7,7 +7,8 @@ int oldMillis;
 
 void setup(){
 	size(800, 600, P2D);
-	noSmooth();
+	frameRate(120);
+	//noSmooth();
 	gameObjects = new ArrayList<GameObject>();
 
 	player = new Player();
