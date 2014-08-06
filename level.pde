@@ -6,8 +6,8 @@ class Level extends ArrayList<GameObject> {
 		cam = new Camera(new PVector(width/2, height/2));
 		this.add(cam);
 
-		crossHair = new CrossHair();
-		this.add(crossHair);
+		crosshair = new Crosshair();
+		this.add(crosshair);
 	}
 
 	void resolveCollisions(){

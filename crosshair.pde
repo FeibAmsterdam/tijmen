@@ -1,8 +1,8 @@
-class CrossHair extends GameObject{
+class Crosshair extends GameObject{
 
     Pencil pencil;
 
-    CrossHair() {
+    Crosshair() {
         this.pencil = new Pencil();
         pencil.context = createGraphics(40, 40);
         pencil.context.beginDraw();

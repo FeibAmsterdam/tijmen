@@ -9,6 +9,8 @@ class Player extends GameObject {
     PVector direction = new PVector(1,0);
     boolean flipped = false;
 
+    Weapon weapon, grapple;
+
 	Player(){
         this.dimension = new PVector(25, 25);
 		this.fillColor = color(255, 0, 0);
@@ -17,10 +19,19 @@ class Player extends GameObject {
         blinkTimer = random(1,4);
 
         this.pencil = new Pencil(23);
+
+        this.grapple = new Grapple();
+        currentLevel.add(grapple);
 	}
 
 	void update(float timeStep){
         PVector dir = new PVector();
+
+        if (grapple != null){
+            grapple.position = this.position.get();
+            if (InputHelper.leftMouseClicked)
+                grapple.fire();
+        }
 
     	if (InputHelper.keysPressed[65]) dir.x += -1;
     	if (InputHelper.keysPressed[68]) dir.x += 1;

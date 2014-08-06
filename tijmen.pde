@@ -1,4 +1,4 @@
-GameObject player, crossHair;
+GameObject player, crosshair;
 LevelLoader levelLoader;
 Level level1, level2, currentLevel;
 float timeStep;
@@ -11,11 +11,12 @@ void setup(){
 	frame.setTitle("Tijmen");
 
 	Level level1 = new Level();
+	currentLevel = level1;
 
 	levelLoader = new LevelLoader();
 	levelLoader.loadLevel("./levels/level01", level1);
 
-	currentLevel = level1;
+
 }
 
 void draw(){
