@@ -1,6 +1,6 @@
 Camera cam;
 GameObject player, crossHair;
-
+LevelLoader levelLoader;
 ArrayList<GameObject> gameObjects;
 float timeStep;
 int oldMillis;
@@ -8,34 +8,31 @@ int oldMillis;
 void setup(){
 	size(800, 600, P2D);
 	frameRate(120);
-	//noSmooth();
+
 	gameObjects = new ArrayList<GameObject>();
+
+	levelLoader = new LevelLoader();
+	levelLoader.loadLevel("./levels/test01.png", gameObjects);
 
 	player = new Player();
 
 	gameObjects.add(player);
-	gameObjects.add(new FastEnemy(new PVector(100, 100)));
-	gameObjects.add(new WaterTile(new PVector(300, 300)));
-	gameObjects.add(new BasicTile(new PVector(200, 300)));
-	gameObjects.add(new SpikeTile(new PVector(100, 300)));
-	gameObjects.add(new WallTile(new PVector(0, 300)));
-	gameObjects.add(new Button(new PVector(750, 550)));
+	//gameObjects.add(new FastEnemy(new PVector(100, 100)));
+	//gameObjects.add(new WaterTile(new PVector(300, 300)));
+	//gameObjects.add(new BasicTile(new PVector(200, 300)));
+	//gameObjects.add(new SpikeTile(new PVector(100, 300)));
+	//gameObjects.add(new WallTile(new PVector(0, 300)));
+	//gameObjects.add(new Button(new PVector(750, 550)));
 
-	for (int i = 0; i < 5; ++i) {
-		gameObjects.add(new SlowEnemy(new PVector(random(50)+100, random(0, 100)+100)));
-	}
+	// for (int i = 0; i < 5; ++i) {
+	// 	gameObjects.add(new SlowEnemy(new PVector(random(50)+100, random(0, 100)+100)));
+	// }
 
 	cam = new Camera(new PVector(width/2, height/2));
 	gameObjects.add(cam);
 
 	crossHair = new CrossHair();
 	gameObjects.add(crossHair);
-
-
-
-
-
-
 }
 
 void draw(){
