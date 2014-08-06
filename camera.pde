@@ -8,18 +8,18 @@ class Camera extends GameObject{
 	}
 
 	void update(float timeStep){
-		PVector dir = new PVector();
-		velocity.set(0,0);
+		if(player == null)
+			return;
+        position = PVector.add(PVector.mult(position, 0.8f), PVector.mult(player.position, .2f));
 
-    	if (InputHelper.keysPressed[LEFT]) dir.x += -1;
-    	if (InputHelper.keysPressed[RIGHT]) dir.x += 1;
-    	if (InputHelper.keysPressed[UP]) dir.y += -1;
-    	if (InputHelper.keysPressed[DOWN]) dir.y += 1;
+	    float hw = width*.5f;
+	    float hh = height*.5f;
 
-        dir.normalize();
-        dir.mult(thrust);
-        velocity.add(dir);
-        position.add(PVector.mult(velocity, timeStep));
+	   	float xfactor = (mouseX - hw) / hw;
+	   	float yfactor = (mouseY - hh) / hh;
+	   	println(xfactor, yfactor);
+	   	position.x += 20*xfactor;
+	   	position.y += 20*yfactor;
 	}
 
 	PVector camPos(){
@@ -27,8 +27,6 @@ class Camera extends GameObject{
 	}
 
 	void draw(){
-		fillColor = color(30);
-		ellipse(position.x, position.y, 5, 5);
 	}
 
 	PVector camToWorld(PVector v){

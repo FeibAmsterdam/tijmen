@@ -78,6 +78,10 @@ class LevelLoader {
          GameObject go = getGameObjectFromColor(pixelColor);
           if (go != null){
             go.position = new PVector(iX*tileSize, iY*tileSize);
+            if(go instanceof Player) {
+              player = (Player)go;
+              level.cam.position = player.position;
+            }
             level.add(go);
           }
         }

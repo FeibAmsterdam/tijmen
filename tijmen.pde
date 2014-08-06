@@ -14,7 +14,6 @@ void setup(){
 	levelLoader.loadLevel("./levels/test01", level1);
 	//levelLoader.loadLevel("./levels/test02.png", level2);
 
-	player = new Player();
 	currentLevel = level1;
 
 }
