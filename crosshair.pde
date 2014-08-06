@@ -1,7 +1,7 @@
 class CrossHair extends GameObject{
 
 	void update(float timeStep){
-		position = cam.camToWorld(new PVector(mouseX, mouseY));
+		position = currentLevel.cam.camToWorld(new PVector(mouseX, mouseY));
 	}
 
 	void draw(){
