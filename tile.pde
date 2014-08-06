@@ -5,7 +5,6 @@ class Tile extends GameObject {
 	Tile(){
         // Start position
         this.dimension = new PVector(32, 32);
-
         pencil = new Pencil();
     }
 

@@ -11,6 +11,8 @@ class WallTile extends Tile {
 		this.redraw();
 		pencil.context.popMatrix();
 		pencil.context.endDraw();
+
+		this.initiatesCollision = true;
     }
 
     void draw(){

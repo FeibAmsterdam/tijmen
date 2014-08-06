@@ -10,13 +10,17 @@ void setup(){
 	frame.setTitle("Tijmen");
 
 	Level level1 = new Level();
-	//Level level2 = new Level();
+
+
 	levelLoader = new LevelLoader();
 	levelLoader.loadLevel("./levels/level01", level1);
-	//levelLoader.loadLevel("./levels/test02.png", level2);
 
 	currentLevel = level1;
 
+	// player = new Player();
+	// currentLevel.add(player);
+	// player.position.add(new PVector(100, 100));
+	// currentLevel.add(new WallTile());
 }
 
 void draw(){
