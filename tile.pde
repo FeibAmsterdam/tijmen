@@ -1,11 +1,13 @@
 class Tile extends GameObject {
 
+	Pencil pencil;
 
 	Tile(PVector position){
         // Start position
         this.position = position;
         this.dimension = new PVector(32, 32);
 
+        pencil = new Pencil();
     }
      void draw(){
         fill(fillColor);

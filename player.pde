@@ -5,6 +5,7 @@ class Player extends GameObject {
 	Pencil pencil;
     float blinkTimer;
     float wobbleTimer;
+    PVector direction = new PVector(1,0);
 
 	Player(){
         this.dimension = new PVector(25, 25);
@@ -29,7 +30,11 @@ class Player extends GameObject {
         position.add(PVector.mult(velocity, timeStep));
         velocity.mult(.85f);
 
-        angle = atan2(this.velocity.y, this.velocity.x);
+        direction.mult(0.8f);
+        dir = velocity.get();
+        dir.normalize();
+        direction.add(PVector.mult(dir, 0.2f));
+        angle = atan2(this.direction.y, this.direction.x);
 
         blinkTimer -= timeStep;
         if(blinkTimer < 0) {
@@ -53,16 +58,8 @@ class Player extends GameObject {
 
     		stroke(150,70);
 
-            PVector topleft = PVector.mult(this.dimension, -.5f);
-            PVector bottomright = PVector.mult(this.dimension, .5f);
-            PVector topright = topleft.get();
-            topright.x *= -1f;
-            PVector bottomleft = PVector.mult(topright, -1f);
-
-            this.pencil.pline(topleft, topright);
-            this.pencil.pline(topright, bottomright);
-            this.pencil.pline(bottomright, bottomleft);
-            this.pencil.pline(bottomleft, topleft);
+            PVector halfSize = PVector.mult(this.dimension, .5f);
+            this.pencil.prect(new PVector(0,0), halfSize);
             if(blinkTimer < .3f) {
                 this.pencil.pline(new PVector(1, -5), new PVector(9, -5));
             } else {
