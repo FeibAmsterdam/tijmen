@@ -7,11 +7,12 @@ int oldMillis;
 void setup(){
 	size(1280, 720, P2D);
 	frameRate(120);
+	frame.setTitle("Tijmen");
 
 	Level level1 = new Level();
 	//Level level2 = new Level();
 	levelLoader = new LevelLoader();
-	levelLoader.loadLevel("./levels/test01", level1);
+	levelLoader.loadLevel("./levels/level01", level1);
 	//levelLoader.loadLevel("./levels/test02.png", level2);
 
 	currentLevel = level1;
@@ -27,6 +28,3 @@ void draw(){
 	currentLevel.update();
 	currentLevel.draw();
 }
-
-
-

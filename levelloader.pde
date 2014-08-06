@@ -6,6 +6,7 @@ class LevelLoader {
   String levelTypes[];
   PImage levelImage;
   HashMap<Integer, Class> colorTypeMap = new HashMap<Integer, Class>();
+  HashMap<Integer, String> colorArgsMap = new HashMap<Integer, String>();
 
   private void generateColorTypeMap(){
     for (int iX = 0; iX<levelImage.width; iX++){
@@ -15,7 +16,13 @@ class LevelLoader {
         try
         {
           if (iX < levelTypes.length){
-            colorTypeMap.put(pixelColor, Class.forName("tijmen$" + levelTypes[iX]));
+            String type = levelTypes[iX], args = null;
+            if(type.indexOf('(') > 0) {
+              args = type.substring(type.indexOf('(')+1, type.length()-1);
+              type = type.substring(0, type.indexOf('('));
+            }
+            colorTypeMap.put(pixelColor, Class.forName("tijmen$" + type));
+            colorArgsMap.put(pixelColor, args);
           }
         }
         catch (ClassNotFoundException e)
@@ -42,6 +49,7 @@ class LevelLoader {
       java.lang.reflect.Constructor[] ctors = cl.getDeclaredConstructors();
       // Create an instance with the parent object as parameter (needed for inner classes)
       go = (GameObject)ctors[0].newInstance(new Object[] { tijmen.this });
+      go.parseArgs( colorArgsMap.get(pixelColor) );
     }
     catch (InstantiationException e)
     {

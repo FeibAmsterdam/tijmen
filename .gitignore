@@ -1,1 +1,4 @@
 build-tmp/
+application.*
+.DS_Store
+.DSStore

@@ -21,6 +21,9 @@ class GameObject {
 
   }
 
+  void parseArgs(String args) {
+  }
+
   void update(float timeStep) {
   }
 

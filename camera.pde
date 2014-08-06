@@ -1,7 +1,7 @@
 class Camera extends GameObject{
 
 	PVector camOffset;
-	float thrust = 100;
+
 
 	Camera(PVector camOffset){
 		this.camOffset = camOffset;
@@ -17,7 +17,6 @@ class Camera extends GameObject{
 
 	   	float xfactor = (mouseX - hw) / hw;
 	   	float yfactor = (mouseY - hh) / hh;
-	   	println(xfactor, yfactor);
 	   	position.x += 20*xfactor;
 	   	position.y += 20*yfactor;
 	}

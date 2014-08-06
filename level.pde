@@ -25,7 +25,7 @@ class Level extends ArrayList<GameObject> {
 			pushMatrix();
 			{
 				strokeWeight(1);
-				stroke(200, 220, 255);
+				stroke(200, 220, 255, 150);
 				translate(-cam.camPos().x%32, -cam.camPos().y%32);
 				for(int x = -16; x < width+32; x += 32) {
 					line(x, -32, x, height+32);

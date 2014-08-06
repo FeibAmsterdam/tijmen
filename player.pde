@@ -76,7 +76,7 @@ class Player extends GameObject {
                 flipped = true;
                 a -= PI;
             }
-            a = max(-.2f, min(a, .2f));
+            a = max(-.6f, min(a, .6f));
 
     		rotate(a + (sin(wobbleTimer*4)*0.15f));
         	noFill();
