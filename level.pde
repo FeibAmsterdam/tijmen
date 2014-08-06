@@ -25,6 +25,10 @@ class Level extends ArrayList<GameObject> {
 		for (int i = 0; i < this.size(); i++) {
 			GameObject go = this.get(i);
 			go.update(timeStep);
+				if(go.destroyed) {
+					this.remove(go);
+					i--;
+				}
 		}
 
 		resolveCollisions();

@@ -29,10 +29,8 @@ class Spawner extends GameObject {
 	}
 	@Override
 	void update(float timeStep) {
-		if(last == null) {
-			println("Spawn!");
+		if(last == null || last.destroyed) {
 			last = spawn();
-			println(last);
 			last.position = this.position;
 			if(last != null) {
 				currentLevel.add(last);
@@ -43,19 +41,54 @@ class Spawner extends GameObject {
 	}
 }
 
-class Entrance extends Spawner
-{
+class Entrance extends Spawner {
 	Entrance() {
 		Class cl = Player.class;
 		java.lang.reflect.Constructor[] ctors = cl.getDeclaredConstructors();
 		this.ctor = ctors[0];
 	}
 	void parseArgs(String args) {
-		println("Entrance parseArgs", args);
 	}
 	GameObject spawn() {
 		Player p = (Player)super.spawn();
 		player = p;
 		return p;
+	}
+}
+
+class Exit extends GameObject {
+
+	String filename;
+	Pencil pencil;
+	Exit() {
+		this.pencil = new Pencil();
+	}
+
+	void parseArgs(String args) {
+		filename = "./levels/"+args;
+	}
+
+	void update(float timeStep) {
+		if(player != null && PVector.dist(player.position, this.position) < 20) {
+			Level level1 = new Level();
+			levelLoader = new LevelLoader();
+			levelLoader.loadLevel(filename, level1);
+			currentLevel = level1;
+		}
+	}
+
+	void draw() {
+		this.pencil.strokeColor = color(100, 255, 100);
+		this.pencil.fillColor = color(100, 255, 100);
+
+		pushMatrix();
+		{
+			translate(this.position.x, this.position.y);
+			this.pencil.circle(new PVector(0,0), 40);
+			this.pencil.pfillrect(new PVector(0,0), new PVector(16, 16));
+			this.pencil.pline(new PVector(-5,-4), new PVector(0,5));
+			this.pencil.pline(new PVector(12,-9), new PVector(0,5));
+		}
+		popMatrix();
 	}
 }

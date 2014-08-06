@@ -1,10 +1,8 @@
-class WallTile extends Tile {
+class Pit extends Tile {
 
-	WallTile(){
-		this.fillColor = color(150);
+	Pit(){
+       	this.fillColor = color(200, 10, 0);
 		this.redraw();
-
-		this.initiatesCollision = true;
     }
 
     void draw(){
@@ -32,11 +30,4 @@ class WallTile extends Tile {
 		pencil.context.popMatrix();
 		pencil.context.endDraw();
     }
-}
-
-class BreakableWall extends WallTile {
-	BreakableWall() {
-		this.fillColor = color(180, 170, 150);
-		this.redraw();
-	}
 }

@@ -1,5 +1,5 @@
 Entrance
-Exit(target="test01")
+Exit(test01)
 WallTile
 WaterTile
 Pit

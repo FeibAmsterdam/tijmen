@@ -1,5 +1,8 @@
 class GameObject {
 
+  boolean destroyed = false;
+  float health = 100;
+
   PVector position;
   PVector velocity;
   PVector acceleration;
@@ -27,6 +30,9 @@ class GameObject {
   }
 
   void update(float timeStep) {
+    if(health <= 0) {
+      this.died();
+    }
   }
 
   void draw() {
@@ -41,5 +47,9 @@ class GameObject {
              diameter/2, diameter/2);
 
     popMatrix();
+  }
+
+  void died() {
+    destroyed = true;
   }
 }
