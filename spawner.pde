@@ -10,6 +10,11 @@ class Spawner extends GameObject {
 	public Spawner() {
 	}
 
+    @Override
+    boolean collidesWith(GameObject other) {
+        return false;
+    }
+
 	void parseArgs(String args) {
 		println("Spawner parseArgs", args);
 		try {
@@ -17,7 +22,7 @@ class Spawner extends GameObject {
 			java.lang.reflect.Constructor[] ctors = cl.getDeclaredConstructors();
 			this.ctor = ctors[0];
 		} catch(Exception e) {
-				//this.destroyed = true;
+			this.destroyed = true;
 		}
 	}
 	GameObject spawn() {
@@ -35,7 +40,7 @@ class Spawner extends GameObject {
 			if(last != null) {
 				currentLevel.add(last);
 			} else {
-				//this.destroyed = true;
+				this.destroyed = true;
 			}
 		}
 	}
@@ -49,6 +54,8 @@ class Entrance extends Spawner {
 	}
 	void parseArgs(String args) {
 	}
+
+
 	GameObject spawn() {
 		Player p = (Player)super.spawn();
 		player = p;
@@ -68,8 +75,13 @@ class Exit extends GameObject {
 		filename = "./levels/"+args;
 	}
 
-	void update(float timeStep) {
-		if(player != null && PVector.dist(player.position, this.position) < 20) {
+    @Override
+    boolean collidesWith( GameObject other ) {
+        return false;
+    }
+
+	void overlaps( GameObject other ) {
+		if(other == player) {
 			Level level1 = new Level();
 			levelLoader = new LevelLoader();
 			levelLoader.loadLevel(filename, level1);

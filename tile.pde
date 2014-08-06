@@ -6,6 +6,7 @@ class Tile extends GameObject {
         // Start position
         this.dimension = new PVector(32, 32);
         pencil = new Pencil();
+        unyielding = true;
     }
 
     void draw(){

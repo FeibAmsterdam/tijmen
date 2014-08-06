@@ -31,9 +31,9 @@ PVector getCollisionResolveVector(GameObject go0, GameObject go1){
       vector.y = 0;
     else
       vector.x = 0;
+    return vector;
   }
   else
-    vector.set(0, 0);
+    return null;
 
-  return vector;
 }

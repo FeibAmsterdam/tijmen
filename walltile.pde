@@ -3,8 +3,6 @@ class WallTile extends Tile {
 	WallTile(){
 		this.fillColor = color(150);
 		this.redraw();
-
-		this.initiatesCollision = true;
     }
 
     void draw(){

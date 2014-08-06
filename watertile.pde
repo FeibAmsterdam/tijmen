@@ -24,6 +24,14 @@ class WaterTile extends Tile {
         popMatrix();
     }
 
+    @Override
+    boolean collidesWith( GameObject other ) {
+        if( other == player ) {
+            return false;
+        }
+        return true;
+    }
+
     void redraw(){
 		pencil.fillColor = this.fillColor;
         pencil.pfillrect(new PVector(0,0), PVector.mult(dimension, .47f));

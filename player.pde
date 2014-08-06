@@ -12,6 +12,7 @@ class Player extends GameObject {
 	Player(){
         this.dimension = new PVector(25, 25);
 		this.fillColor = color(255, 0, 0);
+        initiatesCollision = true;
 
         blinkTimer = random(1,4);
 

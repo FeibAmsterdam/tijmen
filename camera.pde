@@ -21,6 +21,11 @@ class Camera extends GameObject{
 	   	position.y += 20*yfactor;
 	}
 
+    @Override
+    boolean collidesWith(GameObject other) {
+        return false;
+    }
+
 	PVector camPos(){
 		return PVector.sub(position, camOffset);
 	}

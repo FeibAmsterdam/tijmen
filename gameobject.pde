@@ -15,6 +15,7 @@ class GameObject {
   float speed;
 
   boolean initiatesCollision = false;
+  boolean unyielding = false;
 
   GameObject(){
     this.dimension = new PVector(20, 20);
@@ -27,6 +28,16 @@ class GameObject {
   }
 
   void parseArgs(String args) {
+  }
+
+  boolean collidesWith( GameObject other ) {
+    return true;
+  }
+
+  void overlaps( GameObject other ) {
+  }
+
+  void collision( GameObject other, PVector interpenetration ) {
   }
 
   void update(float timeStep) {

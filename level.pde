@@ -12,10 +12,19 @@ class Level extends ArrayList<GameObject> {
 
 	void resolveCollisions(){
 		for (GameObject go : this){
-			if (go.initiatesCollision){
-				if (go != player){
-					PVector collisionVector = getCollisionResolveVector(go, player);
-					player.position.sub(PVector.mult(collisionVector, 1.10f));
+			for(GameObject other : this) {
+				if (go != other && (go.initiatesCollision || other.initiatesCollision)){
+					PVector collisionVector = getCollisionResolveVector(go, other);
+					if(collisionVector != null) {
+						if(go.collidesWith(other) && other.collidesWith(go)) {
+							go.collision(other, collisionVector);
+							if(!other.unyielding) {
+								other.position.sub(PVector.mult(collisionVector, 1.10f));
+							}
+						} else {
+							go.overlaps(other);
+						}
+					}
 				}
 			}
 		}

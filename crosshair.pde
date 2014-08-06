@@ -21,6 +21,11 @@ class CrossHair extends GameObject{
 		position = currentLevel.cam.camToWorld(new PVector(mouseX, mouseY));
 	}
 
+    @Override
+    boolean collidesWith(GameObject other) {
+        return false;
+    }
+
     void draw(){
         pushMatrix();
         {

@@ -16,11 +16,6 @@ void setup(){
 	levelLoader.loadLevel("./levels/level01", level1);
 
 	currentLevel = level1;
-
-	// player = new Player();
-	// currentLevel.add(player);
-	// player.position.add(new PVector(100, 100));
-	// currentLevel.add(new WallTile());
 }
 
 void draw(){
