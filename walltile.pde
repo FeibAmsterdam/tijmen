@@ -1,20 +1,36 @@
 class WallTile extends Tile {
 
 
-
 	WallTile(PVector position){
         super(position);
-		this.fillColor = color(150, 150, 150 );
+		this.fillColor = color(150);
+        pencil.context = createGraphics(40, 40);
+		pencil.context.beginDraw();
+ 		pencil.context.background(0,0);
+		pencil.context.smooth();
+		pencil.context.pushMatrix();
+		pencil.context.translate(20, 20);
+		this.redraw();
+		pencil.context.popMatrix();
+		pencil.context.endDraw();
     }
 
-
     void draw(){
-		pencil.fillColor = color(150, 150, 150);
-        pencil.pfillrect(position, PVector.mult(dimension, .47f));
+    	pushMatrix();
+    	{
+	    	translate(this.position.x-20, this.position.y-20);
+	    	fill(0);
+	    	image(pencil.context, 0, 0);
+	    }
+	    popMatrix();
+    }
 
-		pencil.strokeColor = color(150);
-        pencil.prect(position, PVector.mult(dimension, .5f));
+    void redraw(){
+		pencil.fillColor = this.fillColor;
+        pencil.pfillrect(new PVector(0,0), PVector.mult(dimension, .47f));
 
+		pencil.strokeColor = this.fillColor;
+        pencil.prect(new PVector(0,0), PVector.mult(dimension, .5f));
     }
 }
 

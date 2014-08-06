@@ -95,16 +95,18 @@ class Pencil {
 	int seed;
 	private color strokeColor;
 	private color fillColor;
+	public PGraphics context;
 	Pencil() {
 		this((int)random(0,100));
 	}
 	Pencil(int seed) {
+		context = g;
 		this.seed = seed;
 		strokeColor = color(150);
 		fillColor = color(150);
 	}
 	void pline(PVector a, PVector b) {
-		stroke(strokeColor,70);
+		context.stroke(strokeColor,70);
 
 		float w = 2;
 	    float n = w*2;
@@ -115,26 +117,26 @@ class Pencil {
 		for(int i=0;i<n;i++) {
 			// TODO: randomize current stroke
 			//stroke(180+col/3+g.next()*10,col,220-col/3+g.next()*5,30);
-			line( a.x+gauss.next()*w,a.y+gauss.next()*w,
+			context.line( a.x+gauss.next()*w,a.y+gauss.next()*w,
 				b.x+gauss.next()*w,b.y+gauss.next()*w);
 		}
 	}
 
 	void circle(PVector position, float radius) {
-		stroke(strokeColor,70);
-        noFill();
+		context.stroke(strokeColor,70);
+        context.noFill();
 
 		Gaussian gauss = new Gaussian(seed);
 	    float width1 = 2;
 	    float width2 = 1;
 		for(int i=0;i<5;i++) {
-			pushMatrix();
+			context.pushMatrix();
 			{
-				translate(position.x, position.y);
-				rotate(gauss.next()*2*PI);
-				ellipse(gauss.next()*width2,gauss.next()*width2,radius+gauss.next()*width1,radius+gauss.next()*width1);
+				context.translate(position.x, position.y);
+				context.rotate(gauss.next()*2*PI);
+				context.ellipse(gauss.next()*width2,gauss.next()*width2,radius+gauss.next()*width1,radius+gauss.next()*width1);
 			}
-			popMatrix();
+			context.popMatrix();
 		}
 	}
 
@@ -145,20 +147,20 @@ class Pencil {
         topright.x *= -1f;
         PVector bottomleft = PVector.mult(topright, -1f);
 
-	    pushMatrix();
+	    context.pushMatrix();
         {
-        	translate(position.x, position.y);
+        	context.translate(position.x, position.y);
 	        this.pline(topleft, topright);
 	        this.pline(topright, bottomright);
 	        this.pline(bottomright, bottomleft);
 	        this.pline(bottomleft, topleft);
 	    }
-        popMatrix();
+        context.popMatrix();
 	}
 
 	void pfillrect(PVector position, PVector halfSize) {
 
-		stroke(fillColor, 30);
+		context.stroke(fillColor, 30);
 
 		float w = 2f;
 		float longSide = max(halfSize.x, halfSize.y);
@@ -166,12 +168,12 @@ class Pencil {
 		int count = (int)(longSide) * 2;
 
 		Gaussian gauss = new Gaussian(seed);
-		float angle = .1f;
+		float angle = .08 + gauss.rand.sample()*.04f;
 		PVector proj = new PVector(0, longSide*4);
 		proj.rotate(angle);
-		pushMatrix();
+		context.pushMatrix();
 		{
-			translate(position.x, position.y);
+			context.translate(position.x, position.y);
 			float step = longSide / count * 2;
 			for(int i = 1; i < count+10; i++) {
 				PVector top = new PVector( -halfSize.x + (i*step), -halfSize.y);
@@ -184,10 +186,10 @@ class Pencil {
 				if(bot.x >= halfSize.x)
 					break;
 
-				line(top.x + gauss.next()*w, top.y + gauss.next()*w, bot.x + gauss.next()*w, bot.y + gauss.next()*w);
+				context.line(top.x + gauss.next()*w, top.y + gauss.next()*w, bot.x + gauss.next()*w, bot.y + gauss.next()*w);
 			}
 		}
-		popMatrix();
+		context.popMatrix();
 	}
 }
 

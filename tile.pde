@@ -9,7 +9,7 @@ class Tile extends GameObject {
 
         pencil = new Pencil();
     }
-     void draw(){
+    void draw(){
         fill(fillColor);
         stroke(255,0,0);
         rect(position.x, position.y, dimension.x, dimension.y);

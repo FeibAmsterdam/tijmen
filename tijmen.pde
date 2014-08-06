@@ -9,7 +9,6 @@ int oldMillis;
 void setup(){
 	size(800, 600, P2D);
 	frameRate(120);
-	gameObjects.add(new WallTile(new PVector(100, 400)));
 
 
 	Level level1 = new Level();
