@@ -36,7 +36,7 @@ class Spawner extends GameObject {
 	void update(float timeStep) {
 		if(last == null || last.destroyed) {
 			last = spawn();
-			last.position = this.position;
+			last.position = this.position.get();
 			if(last != null) {
 				currentLevel.add(last);
 			} else {
@@ -52,14 +52,18 @@ class Entrance extends Spawner {
 		java.lang.reflect.Constructor[] ctors = cl.getDeclaredConstructors();
 		this.ctor = ctors[0];
 	}
+
 	void parseArgs(String args) {
 	}
-
 
 	GameObject spawn() {
 		Player p = (Player)super.spawn();
 		player = p;
 		return p;
+	}
+
+	void draw(){
+
 	}
 }
 

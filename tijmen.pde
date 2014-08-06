@@ -7,10 +7,10 @@ int oldMillis;
 void setup(){
 	size(1280, 720, P2D);
 	frameRate(120);
+
 	frame.setTitle("Tijmen");
 
 	Level level1 = new Level();
-
 
 	levelLoader = new LevelLoader();
 	levelLoader.loadLevel("./levels/level01", level1);

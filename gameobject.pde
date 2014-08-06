@@ -47,11 +47,13 @@ class GameObject {
   }
 
   void draw() {
+    pushMatrix();
+
+    translate(this.position.x, this.position.y);
+    fill(0);
+    text(getClass().getSimpleName(), 0, 0);
     noStroke();
     fill(fillColor);
-
-    pushMatrix();
-    translate(this.position.x, this.position.y);
 
     triangle(-diameter/2, diameter/2,
              0, -diameter/2,
