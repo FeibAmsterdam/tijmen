@@ -192,27 +192,3 @@ class Pencil {
 		context.popMatrix();
 	}
 }
-
-
-
-// float randomGaussian() {
-// 	if(haveNextGaussian) {
-// 		haveNextGaussian = false;
-// 		return nextGaussian;
-// 	} else {
-// 		float v1,v2,s;
-// 		do {
-// 			v1 = 2 * random() - 1;
-// 			v2 = 2 * random() - 1;
-// 			s = v1 * v1 + v2 * v2;
-// 		} while (s >=1 || s == 0);
-
-// 		float mult = sqrt(-2 * log(s) / s);
-// 		nextGaussian = v2 * mult;
-// 		haveNextGaussian = true;
-// 		return v1 * mult;
-// 	}
-// }
-
-
-

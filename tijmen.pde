@@ -7,7 +7,7 @@ float timeStep;
 int oldMillis;
 
 void setup(){
-	size(800, 600, P2D);
+	size(1280, 720, P2D);
 	frameRate(120);
 
 
@@ -19,7 +19,6 @@ void setup(){
 
 	player = new Player();
 	currentLevel = level1;
-
 
 
 

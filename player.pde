@@ -5,7 +5,9 @@ class Player extends GameObject {
 	Pencil pencil;
     float blinkTimer;
     float wobbleTimer;
+    float flipTimer;
     PVector direction = new PVector(1,0);
+    boolean flipped = false;
 
 	Player(){
         this.dimension = new PVector(25, 25);
@@ -36,6 +38,17 @@ class Player extends GameObject {
         direction.add(PVector.mult(dir, 0.2f));
         angle = atan2(this.direction.y, this.direction.x);
 
+        boolean was = flipped;
+        if(angle <- PI/2 || angle > PI/2 ) {
+            flipped = true;
+        } else {
+            flipped = false;
+        }
+        if(was != flipped) {
+            flipTimer = .3f;
+        }
+        flipTimer -= timeStep;
+
         blinkTimer -= timeStep;
         if(blinkTimer < 0) {
             if(random(0,1) < .5f) {
@@ -53,17 +66,36 @@ class Player extends GameObject {
         {
     		translate(position.x,position.y);
             float speed = this.velocity.mag();
-    		rotate(angle + (sin(wobbleTimer*4)*0.15f));
+
+            float a = angle;
+            boolean flipped = false;
+            if(a<-PI/2) {
+                flipped = true;
+                a += PI;
+            } else if(a>PI/2) {
+                flipped = true;
+                a -= PI;
+            }
+            a = max(-.2f, min(a, .2f));
+
+    		rotate(a + (sin(wobbleTimer*4)*0.15f));
         	noFill();
 
     		stroke(150,70);
 
+            float flipScale = 1;
+            if(flipTimer >0) {
+                flipScale = abs(flipTimer - 0.15f)/0.15f;
+            }
+            if(flipped)
+                flipScale *= -1;
             PVector halfSize = PVector.mult(this.dimension, .5f);
+            halfSize.x *= abs(flipScale);
             this.pencil.prect(new PVector(0,0), halfSize);
             if(blinkTimer < .3f) {
-                this.pencil.pline(new PVector(1, -5), new PVector(9, -5));
+                this.pencil.pline(new PVector(1*flipScale, -5), new PVector(9*flipScale, -5));
             } else {
-                this.pencil.circle(new PVector(5, -5), 8);
+                this.pencil.circle(new PVector(5*flipScale, -5), 8);
             }
         }
     	popMatrix();
