@@ -11,8 +11,6 @@ class GameObject {
 
   float speed;
 
-
-
   GameObject(){
     this.dimension = new PVector(20, 20);
     this.diameter = this.dimension.mag();

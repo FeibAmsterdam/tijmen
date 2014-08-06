@@ -1,10 +1,7 @@
 class WaterTile extends Tile {
 
+	WaterTile(){
 
-
-	WaterTile(PVector position){
-
-        super(position);
        	this.fillColor = color(10, 30, 150);
         pencil.context = createGraphics(40, 40);
         pencil.context.beginDraw();
@@ -26,6 +23,7 @@ class WaterTile extends Tile {
         }
         popMatrix();
     }
+
     void redraw(){
 		pencil.fillColor = this.fillColor;
         pencil.pfillrect(new PVector(0,0), PVector.mult(dimension, .47f));
@@ -33,5 +31,6 @@ class WaterTile extends Tile {
 		pencil.strokeColor = this.fillColor;
         pencil.prect(new PVector(0,0), PVector.mult(dimension, .5f));
     }
+
 }
 

@@ -1,8 +1,6 @@
 class WallTile extends Tile {
 
-
-	WallTile(PVector position){
-        super(position);
+	WallTile(){
 		this.fillColor = color(150);
         pencil.context = createGraphics(40, 40);
 		pencil.context.beginDraw();

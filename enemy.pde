@@ -2,9 +2,9 @@ class Enemy extends GameObject {
 
     float damage;
 
-	Enemy(PVector position){
+	Enemy(){
         // Start position
-        this.position = position.get();
+        this.position = new PVector();
 
         this.velocity.x = random(-1.0, 1.0);
         this.velocity.y = random(-1.0, 1.0);

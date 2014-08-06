@@ -1,11 +1,8 @@
 class Button extends GameObject {
 
-
-
-
-	Button(PVector position){
+	Button(){
+		this.position = new PVector();
 		this.dimension = new PVector(50, 50);
-        this.position = position.get();
         this.fillColor = color(0, 210, 0);
 	}
 

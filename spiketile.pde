@@ -1,11 +1,6 @@
 class SpikeTile extends Tile {
 
-
-
-	SpikeTile(PVector position){
-
-        super(position);
+	SpikeTile(){
        	this.fillColor = color(150, 150, 150 );
     }
 }
-

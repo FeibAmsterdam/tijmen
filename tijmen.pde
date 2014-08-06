@@ -1,5 +1,3 @@
-
-
 GameObject player, crossHair;
 LevelLoader levelLoader;
 Level level1, level2, currentLevel;
@@ -10,18 +8,14 @@ void setup(){
 	size(1280, 720, P2D);
 	frameRate(120);
 
-
 	Level level1 = new Level();
 	//Level level2 = new Level();
 	levelLoader = new LevelLoader();
-	levelLoader.loadLevel("./levels/test01.png", level1);
+	levelLoader.loadLevel("./levels/test01", level1);
 	//levelLoader.loadLevel("./levels/test02.png", level2);
 
 	player = new Player();
 	currentLevel = level1;
-
-
-
 
 }
 
@@ -33,9 +27,6 @@ void draw(){
 	InputHelper.update();
 	currentLevel.update();
 	currentLevel.draw();
-
-
-
 }
 
 
