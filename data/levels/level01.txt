@@ -5,7 +5,7 @@ WaterTile
 Pit
 Checkpoint
 Pickup(type="handgun")
-Pickup(type="grapple")
+GrapplePickup
 BreakableWall
 Text(   Use  the  WASD  keys  to  move)
 Arrow(0)
