@@ -71,6 +71,7 @@ class Player extends GameObject {
         }
 
         wobbleTimer += timeStep * this.velocity.mag() * 0.01f;
+        super.update(timeStep);
 	}
 
 	void draw(){

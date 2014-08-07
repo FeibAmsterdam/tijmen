@@ -5,6 +5,21 @@ class Pit extends Tile {
 		this.redraw();
     }
 
+    @Override
+    boolean collidesWith( GameObject other ) {
+        if( other == player ) {
+            return !(player.grapple!=null&&player.grapple.hook!=null&player.grapple.hook.isHooked);
+        }
+        return true;
+    }
+
+  void collision( GameObject other, PVector interpenetration ) {
+  	println("Collision with ", other);
+    	if(other == player) {
+    		player.health -= 1e10;
+    	}
+    }
+
     void draw(){
     	pushMatrix();
     	{
