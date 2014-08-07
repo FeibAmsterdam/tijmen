@@ -27,7 +27,7 @@ class WaterTile extends Tile {
     @Override
     boolean collidesWith( GameObject other ) {
         if( other == player ) {
-            return !(player.grapple!=null&&player.grapple.hook!=null&player.grapple.hook.isHooked);
+            return !player.isFlying;
         }
         return true;
     }

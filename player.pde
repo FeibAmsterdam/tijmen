@@ -8,7 +8,7 @@ class Player extends GameObject {
     float flipTimer;
     PVector direction = new PVector(1,0);
     boolean flipped = false;
-
+    boolean isFlying = false;
     Grapple grapple;
 
 	Player(){
@@ -29,25 +29,46 @@ class Player extends GameObject {
 
         if (grapple != null){
             grapple.position = this.position.get();
-            if (InputHelper.leftMouseClicked)
+            if (InputHelper.leftMouseClicked){
                 grapple.fire();
+                velocity.set(0.0, 0.0);
+            }
 
             if (InputHelper.leftMouseReleased){
                 if (grapple.hook != null){
                    if (grapple.hook.isHooked){
-                        this.velocity = PVector.mult(grapple.direction, grapple.pullForce);
+                        this.acceleration = PVector.mult(grapple.direction, grapple.pullForce);
+                        this.isFlying = true;
                     }
-                }
-                else {
-                    grapple.release();
+                    else {
+                        grapple.release();
+                        isFlying = false;
+                    }
                 }
             }
         }
 
-    	if (InputHelper.keysPressed[65]) dir.x += -1;
-    	if (InputHelper.keysPressed[68]) dir.x += 1;
-    	if (InputHelper.keysPressed[87]) dir.y += -1;
-    	if (InputHelper.keysPressed[83]) dir.y += 1;
+        if (!this.isFlying){
+           if (this.grapple.hook == null){
+        	   if (InputHelper.keysPressed[65]) dir.x += -1;
+        	   if (InputHelper.keysPressed[68]) dir.x += 1;
+        	   if (InputHelper.keysPressed[87]) dir.y += -1;
+        	   if (InputHelper.keysPressed[83]) dir.y += 1;
+            }
+            else if (this.grapple.hook.isHooked){
+                // Implement hooke movement behavior here
+            }
+         } else {
+            if (grapple.hook != null){
+                println( this.position.dist(this.grapple.hook.position));
+                if (this.position.dist(this.grapple.hook.position) < 30.0f){
+                    this.grapple.release();
+                    this.velocity.set(0.0f,0.0f);
+                    this.acceleration.set(0.0f,0.0f);
+                    this.isFlying = false;
+                }
+            }
+        }
 
         dir.normalize();
         dir.mult(thrust);
