@@ -13,8 +13,7 @@ class Pit extends Tile {
         return true;
     }
 
-  void collision( GameObject other, PVector interpenetration ) {
-  	println("Collision with ", other);
+    void collision( GameObject other, PVector interpenetration ) {
     	if(other == player) {
     		player.health -= 1e10;
     	}
