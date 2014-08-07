@@ -9,6 +9,7 @@ void setup(){
 	frameRate(120);
 
 	frame.setTitle("Tijmen");
+	textFont(loadFont("./assets/pencilgrid.vlw"));
 
 	Level level1 = new Level();
 	currentLevel = level1;
@@ -24,7 +25,12 @@ void draw(){
 	oldMillis = millis();
 	background(255,250,250);
 
+	stroke(0);
+
+
 	InputHelper.update();
 	currentLevel.update();
 	currentLevel.draw();
+
+	text("fontTest", 100, 100);
 }
