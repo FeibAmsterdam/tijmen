@@ -19,6 +19,16 @@ class Text extends GameObject {
 	}
 
 	void draw() {
+		if(this.text.indexOf("like it") >= 0) {
+			if(player.grapple == null) {
+				return;
+			}
+		}
+		if(this.text.indexOf("it's catchy") >= 0) {
+			if(player.position.x < this.position.x - 70 && player.position.y < this.position.y+30) {
+				return;
+			}
+		}
 		if(this.text == null ) {
 			return;
 		}

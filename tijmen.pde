@@ -1,4 +1,5 @@
-GameObject player, crosshair;
+GameObject crosshair;
+Player player;
 LevelLoader levelLoader;
 Level currentLevel;
 float timeStep;
