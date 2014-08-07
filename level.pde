@@ -1,6 +1,7 @@
 class Level extends ArrayList<GameObject> {
 
 	Camera cam;
+	int integrationSteps = 2;
 
 	Level(){
 		cam = new Camera(new PVector(width/2, height/2));
@@ -40,7 +41,15 @@ class Level extends ArrayList<GameObject> {
 				}
 		}
 
-		resolveCollisions();
+		for (int i=0; i<integrationSteps; i++){
+			for (GameObject go : this){
+				go.integrate(timeStep/integrationSteps);
+			}
+
+			resolveCollisions();
+		}
+
+
 	}
 
 	void draw(){
@@ -61,10 +70,12 @@ class Level extends ArrayList<GameObject> {
 
 
 		pushMatrix();
-		translate(-cam.camPos().x, -cam.camPos().y);
-		for (int i = 0; i < this.size(); i++) {
-			GameObject go = this.get(i);
-			go.draw();
+		{
+			translate(-cam.camPos().x, -cam.camPos().y);
+			for (int i = 0; i < this.size(); i++) {
+				GameObject go = this.get(i);
+				go.draw();
+			}
 		}
 		popMatrix();
 	}

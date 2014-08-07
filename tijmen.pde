@@ -7,7 +7,7 @@ int oldMillis;
 String switchLevel = null;
 
 void setup(){
-	size(1280, 720, P2D);
+	size(640, 360, P2D);
 	frameRate(120);
 
 	frame.setTitle("Missing Impassable");

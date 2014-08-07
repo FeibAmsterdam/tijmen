@@ -22,9 +22,9 @@ class GameObject {
     this.diameter = this.dimension.mag();
     this.fillColor = color(255, 255, 255);
 
-    this.position = new PVector(width/2 - dimension.x/2, height/2);
+    this.position = new PVector();
     this.velocity = new PVector();
-
+    this.acceleration = new PVector();
   }
 
   void parseArgs(String args) {
@@ -44,6 +44,11 @@ class GameObject {
     if(health <= 0) {
       this.died();
     }
+  }
+
+  void integrate(float timeStep){
+    this.velocity.add(PVector.mult(this.acceleration, timeStep));
+    this.position.add(PVector.mult(this.velocity, timeStep));
   }
 
   void draw() {

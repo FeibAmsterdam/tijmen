@@ -9,7 +9,7 @@ class Player extends GameObject {
     PVector direction = new PVector(1,0);
     boolean flipped = false;
 
-    Weapon weapon, grapple;
+    Grapple grapple;
 
 	Player(){
         this.dimension = new PVector(25, 25);
@@ -41,7 +41,7 @@ class Player extends GameObject {
         dir.normalize();
         dir.mult(thrust);
         velocity.add(dir);
-        position.add(PVector.mult(velocity, timeStep));
+        //position.add(PVector.mult(velocity, timeStep));
         velocity.mult(.85f);
 
         direction.mult(0.8f);
