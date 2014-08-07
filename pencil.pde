@@ -105,6 +105,9 @@ class Pencil {
 		strokeColor = color(150);
 		fillColor = color(150);
 	}
+	void pline(float ax, float ay, float bx, float by) {
+		this.pline(new PVector(ax, ay), new PVector(bx, by));
+	}
 	void pline(PVector a, PVector b) {
 		context.stroke(strokeColor,70);
 

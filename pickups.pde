@@ -1,7 +1,7 @@
 
 class GrapplePickup extends GameObject
 {
-	boolean pickedUp = false; // So more pickup instances can exists
+	boolean pickedUp = false;
 	boolean doPickup = false;
 
 	Pencil pencil;

@@ -19,15 +19,10 @@ public class Grapple extends GameObject {
 		hook.isHooked = false;
 		hook.position = this.position.get();
 		hook.velocity = PVector.mult(this.direction, thrust);
+		hook.pencil.seed = (int)random(0,100);
 	}
 
 	public void draw(){
-		pushMatrix();
-		translate(position.x, position.y);
-		fill(0);
-		text("weapon", 0, 0);
-		popMatrix();
-
 		pencil.pline(position, hook.position);
 	}
 
@@ -40,21 +35,48 @@ public class Hook extends GameObject{
 
 	boolean isFlying, isHooked;
 
+	Pencil pencil;
+	float angle;
+
 	public Hook(){
 		isFlying = false;
 		isHooked = false;
 		initiatesCollision = true;
 		unyielding = true;
+
+		this.pencil = new Pencil();
+	}
+
+	void update(float timeStep) {
+		if(this.velocity.mag() > 1) {
+			angle = atan2(this.velocity.y, this.velocity.x);
+		}
 	}
 
 	public void draw(){
 		pushMatrix();
-		translate(position.x, position.y);
+		{
+			translate(position.x, position.y);
+			rotate(angle);
 
-		text("hook", 0, 0);
-		fill(0, 0, 0, 100);
-		rect(0, 0, dimension.x, dimension.y);
+			//text("hook", 0, 0);
+			pencil.strokeColor = color(100);
+			pencil.pline(-20, -10, 10, 0);
+			pencil.pline(-20,  10, 10, 0);
+			pencil.pline(0,  3, 10, 0);
+			pencil.pline(0,  0, 10, 0);
+			pencil.pline(0,  -3, 10, 0);
+			pencil.pline(0,  3, 10, 0);
+			pencil.pline(0,  0, 10, 0);
+			pencil.pline(0,  -3, 10, 0);
 
+
+			pencil.pline(-20, 10, -15, 5);
+			pencil.pline(-15, 5,  -20, 0);
+			pencil.pline(-20, 0 , -15, -5);
+			pencil.pline(-15, -5, -20, -10);
+
+		}
 		popMatrix();
 	}
 
