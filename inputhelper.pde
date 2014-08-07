@@ -15,6 +15,10 @@ static class InputHelper {
   static public boolean centerMouseClicked = false;
   static public boolean rightMouseClicked = false;
 
+  static public boolean leftMouseReleased = false;
+  static public boolean centerMouseReleased = false;
+  static public boolean rightMouseReleased = false;
+
   // Call this method after each update in order to remember
   // which keys were pressed in the last frame
   static public void update() {
@@ -26,6 +30,10 @@ static class InputHelper {
     leftMouseClicked = !lastLeftMousePressed && leftMousePressed;
     rightMouseClicked = !lastRightMousePressed && rightMousePressed;
     centerMouseClicked = !lastCenterMousePressed && centerMousePressed;
+
+    leftMouseReleased= lastLeftMousePressed && !leftMousePressed;
+    rightMouseReleased = lastRightMousePressed && !rightMousePressed;
+    centerMouseReleased = lastCenterMousePressed && !centerMousePressed;
 
     lastLeftMousePressed = leftMousePressed;
     lastRightMousePressed = rightMousePressed;

@@ -31,6 +31,17 @@ class Player extends GameObject {
             grapple.position = this.position.get();
             if (InputHelper.leftMouseClicked)
                 grapple.fire();
+
+            if (InputHelper.leftMouseReleased){
+                if (grapple.hook != null){
+                   if (grapple.hook.isHooked){
+                        this.velocity = PVector.mult(grapple.direction, grapple.pullForce);
+                    }
+                }
+                else {
+                    grapple.release();
+                }
+            }
         }
 
     	if (InputHelper.keysPressed[65]) dir.x += -1;

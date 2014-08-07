@@ -1,12 +1,12 @@
 public class Grapple extends GameObject {
 
-	Hook hook = new Hook();
+	Hook hook;
 	float thrust = 1000.0f;
+	float pullForce = 1000.0f;
 	Pencil pencil;
 	PVector direction;
 
 	public Grapple () {
-		currentLevel.add(hook);
 		pencil = new Pencil();
 		this.direction = new PVector(1,0);
 	}
@@ -15,15 +15,24 @@ public class Grapple extends GameObject {
 		this.direction = PVector.sub(crosshair.position, this.position);
 		this.direction.normalize();
 
-		hook.initiatesCollision = true;
-		hook.isHooked = false;
+		hook = new Hook();
+		currentLevel.add(hook);
 		hook.position = this.position.get();
 		hook.velocity = PVector.mult(this.direction, thrust);
 		hook.pencil.seed = (int)random(0,100);
 	}
 
 	public void draw(){
-		pencil.pline(position, hook.position);
+		if (hook != null)
+			pencil.pline(position, hook.position);
+	}
+
+	void release(){
+		if (hook != null){
+			hook.isHooked = false;
+			hook.destroyed = true;
+			hook = null;
+		}
 	}
 
 	boolean collidesWith(GameObject other){
@@ -33,13 +42,12 @@ public class Grapple extends GameObject {
 
 public class Hook extends GameObject{
 
-	boolean isFlying, isHooked;
+	boolean isHooked;
 
 	Pencil pencil;
 	float angle;
 
 	public Hook(){
-		isFlying = false;
 		isHooked = false;
 		initiatesCollision = true;
 		unyielding = true;
@@ -91,7 +99,6 @@ public class Hook extends GameObject{
 		this.velocity.set(0,0);
 		this.initiatesCollision = false;
 		isHooked = true;
-
 	}
 
 	void died(){
