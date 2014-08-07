@@ -8,6 +8,7 @@ public class Grapple extends GameObject {
 	public Grapple () {
 		currentLevel.add(hook);
 		pencil = new Pencil();
+		this.direction = new PVector(1,0);
 	}
 
 	void fire(){
