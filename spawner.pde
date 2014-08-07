@@ -86,10 +86,7 @@ class Exit extends GameObject {
 
 	void overlaps( GameObject other ) {
 		if(other == player) {
-			Level level1 = new Level();
-			levelLoader = new LevelLoader();
-			levelLoader.loadLevel(filename, level1);
-			currentLevel = level1;
+			switchLevel = filename;
 		}
 	}
 

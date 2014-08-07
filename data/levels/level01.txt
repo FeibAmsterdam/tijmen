@@ -7,3 +7,10 @@ Checkpoint
 Pickup(type="handgun")
 Pickup(type="grapple")
 BreakableWall
+Text(   Use  the  WASD  keys  to  move)
+Arrow(0)
+Arrow(-1.2)
+Arrow(-1.64)
+Text(  This way!)
+TextRed(Danger!)
+TextSmall(water..)

@@ -1,14 +1,15 @@
 GameObject player, crosshair;
 LevelLoader levelLoader;
-Level level1, level2, currentLevel;
+Level currentLevel;
 float timeStep;
 int oldMillis;
+String switchLevel = null;
 
 void setup(){
 	size(1280, 720, P2D);
 	frameRate(120);
 
-	frame.setTitle("Tijmen");
+	frame.setTitle("Missing Impassable");
 	textFont(loadFont("./assets/pencilgrid.vlw"));
 
 	Level level1 = new Level();
@@ -16,8 +17,6 @@ void setup(){
 
 	levelLoader = new LevelLoader();
 	levelLoader.loadLevel("./levels/level01", level1);
-
-
 }
 
 void draw(){
@@ -32,5 +31,11 @@ void draw(){
 	currentLevel.update();
 	currentLevel.draw();
 
-	text("fontTest", 100, 100);
+	if(switchLevel!= null) {
+		Level level1 = new Level();
+		levelLoader = new LevelLoader();
+		levelLoader.loadLevel(switchLevel, level1);
+		currentLevel = level1;
+		switchLevel = null;
+	}
 }
