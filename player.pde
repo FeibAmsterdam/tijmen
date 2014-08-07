@@ -49,18 +49,17 @@ class Player extends GameObject {
         }
 
         if (!this.isFlying){
-           if (this.grapple.hook == null){
+           if (this.grapple == null || this.grapple.hook == null){
         	   if (InputHelper.keysPressed[65]) dir.x += -1;
         	   if (InputHelper.keysPressed[68]) dir.x += 1;
         	   if (InputHelper.keysPressed[87]) dir.y += -1;
         	   if (InputHelper.keysPressed[83]) dir.y += 1;
             }
-            else if (this.grapple.hook.isHooked){
+            else if (this.grapple != null && this.grapple.hook != null && this.grapple.hook.isHooked){
                 // Implement hooke movement behavior here
             }
          } else {
-            if (grapple.hook != null){
-                println( this.position.dist(this.grapple.hook.position));
+            if (grapple != null && grapple.hook != null){
                 if (this.position.dist(this.grapple.hook.position) < 30.0f){
                     this.grapple.release();
                     this.velocity.set(0.0f,0.0f);

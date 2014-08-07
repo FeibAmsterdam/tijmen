@@ -20,7 +20,9 @@ class GrapplePickup extends GameObject
 
 	void update(float timeStep) {
 		if(!pickedUp && player.grapple != null) {
-			((Grapple)player.grapple).hook.destroyed = true;
+			if(((Grapple)player.grapple).hook!=null) {
+				((Grapple)player.grapple).hook.destroyed = true;
+			}
 			player.grapple.destroyed = true;
 			player.grapple = null;
 		}
